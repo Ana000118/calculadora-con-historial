@@ -2,6 +2,11 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
+  const [numero1, setnumero1]=useState(0);
+  const [numero2, setnumero2]=useState(0);
+  const [Resultado, setresultado]=useState(0);
+  const [operacion, setoperacion]=useState('sumar');
+
 
   return (
     <div className='App'>
@@ -11,20 +16,24 @@ function App() {
 
          <label>Primer Número</label>
          <input 
-           />
+           type="number"
+             value={numero1}
+             onChange={(event) => setnumero1(event.target.value)}/>
 
          <label>Segundo Número</label>
          <input 
-           />
+           type="number"
+             value={numero2}
+             onChange={(event) => setnumero2(event.target.value)}/>
    
-         <select >
+         <select onChange={(event) => setoperacion(event.target.value)}>
            <option>sumar</option>
            <option>restar</option>
            <option>multiplicar</option>
            <option>Dividir</option>
            
          </select>
-           <label>Resultado </label>
+           <label>Resultado {Resultado}</label>
 
                </div>
              </div>
