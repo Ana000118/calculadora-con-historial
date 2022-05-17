@@ -104,7 +104,7 @@ function App() {
              <div className="row ms-2">
                <h2 align="center">Historial</h2>
           {calculadora.length === 0 ? (
-            "Al momento no tienes notas guardadas. Puedes crear una en el formulario"
+            "Al momento no tienes operaciones guardadas."
             ) : (
               <ol>
                 {calculadora.map((item, index) => {
