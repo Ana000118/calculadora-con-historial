@@ -7,6 +7,24 @@ function App() {
   const [Resultado, setresultado]=useState(0);
   const [operacion, setoperacion]=useState('sumar');
 
+  const calcular = () => {
+    if (operacion === "sumar")
+     return parseFloat(numero1) + parseFloat(numero2);
+    else
+     if(operacion === "restar")
+       return parseFloat(numero1) - parseFloat(numero2);
+     else
+       if(operacion === "multiplicar")
+         return parseFloat(numero1) * parseFloat(numero2);
+       else
+         return parseFloat(numero1) / parseFloat(numero2);
+ 
+  };
+
+  useEffect(() => {
+    setresultado(calcular());
+   }, [numero1, numero2, operacion])
+
 
   return (
     <div className='App'>
@@ -34,6 +52,7 @@ function App() {
            
          </select>
            <label>Resultado {Resultado}</label>
+           
 
                </div>
              </div>
