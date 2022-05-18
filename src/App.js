@@ -2,11 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
-  const [inputState, setinputState] = useState({
-    numero1:"",
-    numero2:"",
-    Resultado:"",
-  });
 
   const [numero1, setnumero1]=useState(0);
   const [numero2, setnumero2]=useState(0);
@@ -14,10 +9,13 @@ function App() {
   const [operacion, setoperacion]=useState('sumar');
 
   const inicialState = JSON.parse(localStorage.getItem ("calculadora")) || [];
+  
   const [calculadora, setCalculadora] = useState(inicialState);     
 
   const Guardar = () => {
-    setCalculadora([...calculadora, inputState]);
+    const listaopen = {num1:numero1,num2:numero2, open:operacion, resul:Resultado}
+    const nuevoArreglo = [...calculadora, listaopen]
+    setCalculadora([...nuevoArreglo]);
     localStorage.setItem("calculadora", JSON.stringify(calculadora));
     
   };
@@ -110,7 +108,7 @@ function App() {
                 {calculadora.map((item, index) => {
                   return(
                     <li key ={index}>
-                      {item.numero1} ({item.numero2}) {item.Resultado}&nbsp;
+                      {item.num1} {item.open}{item.num2} ={item.resul}&nbsp;
 
                       <i className="bi-x-circle-fill" 
                       onClick={() => Borraroperacion (index)}
